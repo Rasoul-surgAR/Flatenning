@@ -89,9 +89,7 @@ function c2 = lsarea(x, FF, T_Area_Image)
     c2 = (My_doublearea(x,FF) - T_Area_Image)'* (My_doublearea(x,FF) - T_Area_Image);
 end
 
-function [c3, C_ANG, C_AREA] = totallcost(x, A, b, FF, T_Area_Image,lambda1 , lambda2)
-C_ANG = ([A(:,1:2:end),A(:,2:2:end)] * [x(:,1);x(:,2)] - b)'* ([A(:,1:2:end),A(:,2:2:end)] * [x(:,1);x(:,2)] - b );
-C_AREA = (My_doublearea([x(:,2),x(:,1)],FF) - T_Area_Image)'* (My_doublearea([x(:,2),x(:,1)],FF) - T_Area_Image);
-    c3 = 1 * C_ANG + ...
-       lambda1 * C_AREA;
+function c3 = totallcost(x, A, b, FF, T_Area_Image,lambda1 , lambda2)
+    c3 = lambda1 * ([A(:,1:2:end),A(:,2:2:end)] * [x(:,1);x(:,2)] - b)'* ([A(:,1:2:end),A(:,2:2:end)] * [x(:,1);x(:,2)] - b ) + ...
+       lambda2 * (My_doublearea([x(:,2),x(:,1)],FF) - T_Area_Image)'* (My_doublearea([x(:,2),x(:,1)],FF) - T_Area_Image);
 end

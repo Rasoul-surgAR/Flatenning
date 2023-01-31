@@ -44,7 +44,7 @@ dblA2 = My_doublearea(V_area,FF)
 
 %% VIP
 T_Area_Image = 3.5;
-lambda1 = .5;
+lambda1 = 0;
 lambda2 = 1;
 cons_VIP = @(x) totallcost(x, A, b, FF, T_Area_Image,lambda1, lambda2);
 x0 = 5*randn(12,2);
