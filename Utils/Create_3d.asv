@@ -1,0 +1,29 @@
+% In this version we
+% 1 - compute the 3d mesh based on a given step, so we have a downsampled version of mesh.
+
+
+
+function [X,F] = create_3d_ply_V1(ply_path , step)
+
+% Read .ply file captured by 3d camera and reshapr
+
+ptCloud = pcread(ply_path);
+% figure , pcshow(ptCloud)
+X = ptCloud.Location(:,1);
+Y = ptCloud.Location(:,2);
+Z = ptCloud.Location(:,3);
+
+width = 512;
+height = 384;
+
+XReshape = reshape(X , [width , height]);
+YReshape = reshape(Y , [width , height]);
+ZReshape = reshape(Z , [width , height]);
+
+
+
+
+ 
+% triangulate it with a given step size
+
+% creat a .obj mesh from that
